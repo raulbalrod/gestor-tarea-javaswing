@@ -4,8 +4,8 @@ import bbdd.Conexion;
 
 public class Main {
     public static void main(String[] args) {
-        Conexion.conectar();
+        Conexion.Conectar();
 		
-		// vista MainWindow + importarlo
+        // vista MainWindow + importarlo
     }
 }
