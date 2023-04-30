@@ -1,15 +1,20 @@
 package vista;
 
-<<<<<<< HEAD
+
+
 import bbdd.Conexion;
 import java.sql.*;
 import java.awt.Font;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-=======
+
 import java.awt.Font;
 import javax.swing.JOptionPane;
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
+
+
+import java.awt.Font;
+import javax.swing.JOptionPane;
+
 
 public class MainVista extends javax.swing.JDialog {
 
@@ -17,7 +22,8 @@ public class MainVista extends javax.swing.JDialog {
         initComponents();
     }
 
-<<<<<<< HEAD
+
+
     // Mostrar datos en tabla
     public void mostrar(String tabla) {
         String sql = "SELECT * FROM " + tabla;
@@ -57,8 +63,10 @@ public class MainVista extends javax.swing.JDialog {
         }
     }
     
-=======
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
+
+
+
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -82,11 +90,15 @@ public class MainVista extends javax.swing.JDialog {
         jTable1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-<<<<<<< HEAD
 
-=======
+
+
+
                 {null, null, null, null, null}
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
+
+
+                {null, null, null, null, null}
+
             },
             new String [] {
                 "Nombre", "Descripcion", "Fecha Entrega", "Prioridad", "Estado"
@@ -190,15 +202,21 @@ public class MainVista extends javax.swing.JDialog {
                         .addGap(41, 41, 41)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-<<<<<<< HEAD
+
+
                         .addGap(152, 152, 152)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(76, Short.MAX_VALUE))
-=======
+
                         .addGap(175, 175, 175)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(200, Short.MAX_VALUE))
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
+
+
+                        .addGap(175, 175, 175)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(200, Short.MAX_VALUE))
+
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,26 +239,36 @@ public class MainVista extends javax.swing.JDialog {
                                 .addComponent(jLabel1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)))
-<<<<<<< HEAD
+
+
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(81, Short.MAX_VALUE))
-=======
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(141, Short.MAX_VALUE))
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
+
+
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(141, Short.MAX_VALUE))
+
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
+
+
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-=======
+
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
+
+
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,11 +326,15 @@ public class MainVista extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-<<<<<<< HEAD
+
+
     public javax.swing.JTable jTable1;
-=======
+
     private javax.swing.JTable jTable1;
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
+
+
+    private javax.swing.JTable jTable1;
+
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
-<<<<<<< HEAD
-=======
   <NonVisualComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
 
@@ -20,7 +18,6 @@
       </Layout>
     </Container>
   </NonVisualComponents>
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -43,9 +40,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-=======
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -103,14 +98,12 @@
               <Component id="jButton5" min="-2" pref="155" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="347" max="-2" attributes="0"/>
           </Group>
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-=======
+
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -176,14 +169,11 @@
               </Group>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
           </Group>
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-<<<<<<< HEAD
     <Container class="javax.swing.JPanel" name="jPanel1">
-=======
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -235,12 +225,10 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField1">
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-<<<<<<< HEAD
       </Properties>
 
       <Layout>
@@ -595,7 +583,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField1">
-=======
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
@@ -732,25 +719,20 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="jTextArea1">
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-<<<<<<< HEAD
-=======
             <Property name="columns" type="int" value="20"/>
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
+            <Property name="columns" type="int" value="20"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="66" red="0" type="rgb"/>
             </Property>
-<<<<<<< HEAD
-=======
             <Property name="rows" type="int" value="5"/>
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
+            <Property name="rows" type="int" value="5"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder roundedCorners="true" thickness="2">
@@ -758,7 +740,6 @@
                 </LineBorder>
               </Border>
             </Property>
-<<<<<<< HEAD
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Text Cursor"/>
             </Property>
@@ -930,7 +911,6 @@
         </Component>
       </SubComponents>
     </Container>
-=======
           </Properties>
         </Component>
       </SubComponents>
@@ -1088,6 +1068,5 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
       </Events>
     </Component>
->>>>>>> f2d9b3f911fc75e5b7d1407ee056b39aee857dc8
   </SubComponents>
 </Form>
