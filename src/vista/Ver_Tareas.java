@@ -25,6 +25,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
         String consulta = "Select * from tarea";    
         new controlador.FuncionesApp().mostar(jtTarea, consulta);
     }
+    // Limpiar las cajas una vez se realize un evento
     private void limpiarCajas() {
         txtId.setText(null);
         txtNombre.setText(null);
@@ -97,6 +98,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
         jSeparator1.setBackground(new java.awt.Color(0, 102, 255));
         jSeparator1.setForeground(new java.awt.Color(0, 102, 255));
 
+        jtTarea.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jtTarea.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -368,6 +370,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
         new controlador.FuncionesApp().updateTarea(id, nombre, descripcion, fecha_entrega, prioridad, estado);
         
         actualizarTareas();
+        limpiarCajas();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     // Boton para eliminar tarea de la tabla
@@ -376,6 +379,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
        new controlador.FuncionesApp().deleteTarea(id);
        
        actualizarTareas();
+       limpiarCajas();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     // Boton Menu(Inicio)
