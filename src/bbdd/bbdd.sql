@@ -1,3 +1,5 @@
+/* C:\xampp1\mysql\bin\mysql -u root */
+
 CREATE DATABASE IF NOT EXISTS gestor_tarea;
 USE gestor_tarea;
 
