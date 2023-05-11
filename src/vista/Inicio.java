@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 
 public class Inicio extends javax.swing.JFrame {
@@ -265,22 +266,36 @@ public class Inicio extends javax.swing.JFrame {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             
-            File file = new File("./gestor-tarea-javaswing/src/escritura/fichero.txt");
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
+            File file = new File("./escritura/fichero.txt");
+            // Verificar si el directorio existe y crearlo si es necesario
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
+            }
+                
+            // Verificar si el archivo existe y eliminarlo si es necesario
+            if (file.exists()) {
+                file.delete();
+            }
+             
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             
             while (rs.next()) {
-                tarea += rs.getString("nombre") + ", " 
-                        + rs.getString("descripcion") + ", "
-                        + rs.getString("fecha_entrega") + ", "
-                        + rs.getString("prioridad") + ", "
-                        + rs.getString("estado") + ".\n";
-                
-                bw.write(tarea);
+                bw.write(
+                    rs.getString("nombre") + ", "
+                    + rs.getString("descripcion") + ", "
+                    + rs.getString("fecha_entrega") + ", "
+                    + rs.getString("prioridad") + ", "
+                    + rs.getString("estado") + ".\n"
+                );
             }
             
             bw.close();
-        } catch (SQLException | IOException ex) {}
+            JOptionPane.showMessageDialog(null, "Conecta");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en la consulta SQL: " + ex.getMessage());
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Error al escribir en el archivo: " + ex.getMessage());
+        }
     }
     
     private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
