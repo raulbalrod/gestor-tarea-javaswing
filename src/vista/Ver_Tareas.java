@@ -413,7 +413,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
     }//GEN-LAST:event_txtDescripcionFocusLost
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Inicio_Sesion in = new Inicio_Sesion();
+        Login in = new Login();
         
         in.setVisible(true);
         this.setVisible(false);
