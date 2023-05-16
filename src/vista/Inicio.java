@@ -256,27 +256,32 @@ public class Inicio extends javax.swing.JFrame {
         String sql = "SELECT * FROM tarea";
         String tarea = "";
         try {
-            // Conexion a bd
+            // Conexión a la base de datos
             Conexion conn = new Conexion();
             Connection con = conn.getConnection();
             
+            if (con == null) {
+                JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos");
+            }
+            
             PreparedStatement ps = null;
             ResultSet rs = null;
-             
+            
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            
+        
             File file = new File("./escritura/fichero.txt");
+            
             // Verificar si el directorio existe y crearlo si es necesario
             if (!file.getParentFile().exists()) {
                 file.getParentFile().mkdirs();
             }
-                
-            // Verificar si el archivo existe y eliminarlo si es necesario
-            if (file.exists()) {
-                file.delete();
+            
+            // Crear el archivo si no existe
+            if (!file.exists()) {
+                file.createNewFile();
             }
-             
+            
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             
             while (rs.next()) {
@@ -288,15 +293,16 @@ public class Inicio extends javax.swing.JFrame {
                     + rs.getString("estado") + ".\n"
                 );
             }
-            
+        
             bw.close();
-            JOptionPane.showMessageDialog(null, "Conecta");
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en la consulta SQL: " + ex.getMessage());
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Error al escribir en el archivo: " + ex.getMessage());
         }
     }
+
     
     private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
        importar();
