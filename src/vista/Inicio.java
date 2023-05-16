@@ -270,7 +270,7 @@ public class Inicio extends javax.swing.JFrame {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
         
-            File file = new File("./escritura/fichero.txt");
+            File file = new File("./src/escritura/fichero.txt");
             
             // Verificar si el directorio existe y crearlo si es necesario
             if (!file.getParentFile().exists()) {
