@@ -1,10 +1,7 @@
 package vista;
 
-import bbdd.Conexion;
-import java.sql.*;
-import javax.swing.JOptionPane;
+import beans.ColorCelda;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import placeholder.TextPrompt;
 
 public class Ver_Tareas extends javax.swing.JDialog {
@@ -25,6 +22,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
         String consulta = "Select * from tarea";    
         new controlador.FuncionesApp().mostar(jtTarea, consulta);
     }
+    
     // Limpiar las cajas una vez se realize un evento
     private void limpiarCajas() {
         txtId.setText(null);
@@ -46,7 +44,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtTarea = new javax.swing.JTable();
+        jtTarea = new ColorCelda();
         txtNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -63,7 +61,6 @@ public class Ver_Tareas extends javax.swing.JDialog {
         txtFechaEntrega = new javax.swing.JTextField();
         txtId = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -97,7 +94,9 @@ public class Ver_Tareas extends javax.swing.JDialog {
         jSeparator1.setBackground(new java.awt.Color(0, 102, 255));
         jSeparator1.setForeground(new java.awt.Color(0, 102, 255));
 
-        jtTarea.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jtTarea.setBackground(new java.awt.Color(255, 255, 255));
+        jtTarea.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jtTarea.setForeground(new java.awt.Color(0, 0, 0));
         jtTarea.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -210,13 +209,6 @@ public class Ver_Tareas extends javax.swing.JDialog {
         jLabel8.setForeground(new java.awt.Color(0, 102, 255));
         jLabel8.setText("Id");
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -226,8 +218,6 @@ public class Ver_Tareas extends javax.swing.JDialog {
                 .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(btnBuscarTarea)
-                .addGap(133, 133, 133)
-                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnMenu)
                 .addGap(255, 255, 255))
@@ -286,9 +276,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
                                 .addComponent(btnMenu))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1)
-                                    .addComponent(btnBuscarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnBuscarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -318,9 +306,9 @@ public class Ver_Tareas extends javax.swing.JDialog {
                         .addComponent(cbxPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -395,13 +383,6 @@ public class Ver_Tareas extends javax.swing.JDialog {
 
     }//GEN-LAST:event_txtDescripcionFocusLost
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Login in = new Login();
-        
-        in.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -424,7 +405,6 @@ public class Ver_Tareas extends javax.swing.JDialog {
     private javax.swing.JButton btnMenu;
     private javax.swing.JComboBox<String> cbxEstado;
     private javax.swing.JComboBox<String> cbxPrioridad;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

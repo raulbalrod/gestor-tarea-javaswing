@@ -29,7 +29,7 @@ public class Conexion {
     	try {
            Class.forName(driver) ;
            con = DriverManager.getConnection(url, user, pass);
-           System.out.println("Base de datos situada en :\n "+url);
+           // System.out.println("Base de datos situada en :\n "+url);
            consulta = con.createStatement();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -54,7 +54,7 @@ public class Conexion {
     	try{
             consulta = con.createStatement();
             consulta.executeUpdate(Sentencia);
-            System.out.println("Done.");
+            // System.out.println("Done.");
     	}catch(SQLException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
     	} 

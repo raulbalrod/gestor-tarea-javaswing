@@ -252,57 +252,58 @@ public class Inicio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    void importar() {
+    public void importar() {
+        String ruta = "./src/escritura/fichero.txt";
         String sql = "SELECT * FROM tarea";
-        String tarea = "";
+
+        PreparedStatement ps;
+        ResultSet rs;
+
+        int num = 0;
+
         try {
+            // Creacion de ruta
+            File file = new File(ruta);
+
+            // Si el archivo no existe es creado
+            if (!file.exists()) {
+                file.createNewFile();
+                System.out.println("Archivo creado correctamente");
+            }
+
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+
             // Conexión a la base de datos
             Conexion conn = new Conexion();
             Connection con = conn.getConnection();
-            
+
             if (con == null) {
-                JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos");
+                System.out.println("Error al conectar a la base de datos");
             }
-            
-            PreparedStatement ps = null;
-            ResultSet rs = null;
-            
+
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-        
-            File file = new File("./src/escritura/fichero.txt");
-            
-            // Verificar si el directorio existe y crearlo si es necesario
-            if (!file.getParentFile().exists()) {
-                file.getParentFile().mkdirs();
-            }
-            
-            // Crear el archivo si no existe
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            
-            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-            
+
             while (rs.next()) {
+                num += 1;
                 bw.write(
-                    rs.getString("nombre") + ", "
-                    + rs.getString("descripcion") + ", "
-                    + rs.getString("fecha_entrega") + ", "
-                    + rs.getString("prioridad") + ", "
-                    + rs.getString("estado") + ".\n"
+                    num + ". "
+                        + rs.getString("nombre") + " / "
+                        + rs.getString("descripcion") + " / "
+                        + rs.getString("fecha_entrega") + " / "
+                        + rs.getString("prioridad") + " / "
+                        + rs.getString("estado") + ".\n"
                 );
             }
-        
+            JOptionPane.showMessageDialog(null, "Se ha importado a .txt correctamente");
             bw.close();
-            
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la consulta SQL: " + ex.getMessage());
+            System.out.println("Error en la consulta SQL: " + ex.getMessage());
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Error al escribir en el archivo: " + ex.getMessage());
+            System.out.println("Error al escribir en el archivo: " + ex.getMessage());
         }
     }
-
     
     private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
        importar();
