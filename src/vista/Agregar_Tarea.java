@@ -1,10 +1,7 @@
 package vista;
 
-import bbdd.Conexion;
-import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Agregar_Tarea extends javax.swing.JDialog {
@@ -17,6 +14,7 @@ public class Agregar_Tarea extends javax.swing.JDialog {
         this.setVisible(true);
     }
 
+    // Limpiar las cajas una vez se realize un evento
     private void limpiarCajas() {
         txtNombre.setText(null);
         txtDescripcion.setText(null);
@@ -209,6 +207,7 @@ public class Agregar_Tarea extends javax.swing.JDialog {
         limpiarCajas();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    // Boton para volver al Inicio/ Menu
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         Inicio home = new Inicio();
 

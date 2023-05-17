@@ -1,19 +1,8 @@
 package vista;
 
-import bbdd.Conexion;
 import java.awt.Image;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Scanner;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 
 public class Inicio extends javax.swing.JFrame {
@@ -112,7 +101,7 @@ public class Inicio extends javax.swing.JFrame {
         btnImportar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnImportar.setForeground(new java.awt.Color(0, 102, 255));
         btnImportar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/txt.png"))); // NOI18N
-        btnImportar.setText("Importar Tareas");
+        btnImportar.setText("Exportar Tareas");
         btnImportar.setBorder(null);
         btnImportar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnImportar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -225,62 +214,10 @@ public class Inicio extends javax.swing.JFrame {
         editarTarea.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnEditarActionPerformed
-
-    public void importar() {
-        String ruta = "./src/escritura/fichero.txt";
-        String sql = "SELECT * FROM tarea";
-
-        PreparedStatement ps;
-        ResultSet rs;
-
-        int num = 0;
-
-        try {
-            // Creacion de ruta
-            File file = new File(ruta);
-
-            // Si el archivo no existe es creado
-            if (!file.exists()) {
-                file.createNewFile();
-                System.out.println("Archivo creado correctamente");
-            }
-
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-
-            // Conexión a la base de datos
-            Conexion conn = new Conexion();
-            Connection con = conn.getConnection();
-
-            if (con == null) {
-                System.out.println("Error al conectar a la base de datos");
-            }
-
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                num += 1;
-                bw.write(
-                    num + ". "
-                        + rs.getString("nombre") + " / "
-                        + rs.getString("descripcion") + " / "
-                        + rs.getString("fecha_entrega") + " / "
-                        + rs.getString("prioridad") + " / "
-                        + rs.getString("estado") + ".\n"
-                );
-            }
-            JOptionPane.showMessageDialog(null, "Se ha importado a .txt correctamente");
-            bw.close();
-        } catch (SQLException ex) {
-            System.out.println("Error en la consulta SQL: " + ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println("Error al escribir en el archivo: " + ex.getMessage());
-        }
-    }
     
+    // Exportar tareas a .txt
     private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
-       importar();
+       new controlador.FuncionesApp().exportarTareasFichero();
     }//GEN-LAST:event_btnImportarActionPerformed
 
     public static void main(String args[]) {

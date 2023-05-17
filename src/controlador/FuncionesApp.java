@@ -27,4 +27,8 @@ public class FuncionesApp {
     public void mostrarDatosTarea(JTable table, String sql, JTextField Id, JTextField nombre, JTextArea descripcion, JDateChooser fecha_entrega, JComboBox prioridad, JComboBox estado) {
         new modelo.Tarea().mostrarDatosTarea(table, sql, Id, nombre, descripcion, fecha_entrega, prioridad, estado);
     }
+    
+    public void exportarTareasFichero() {
+        new modelo.Tarea().exportarTareasFichero();
+    }
 }

@@ -1,7 +1,6 @@
 package vista;
 
 import beans.ColorCelda;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import placeholder.TextPrompt;
 
@@ -359,7 +358,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    // Mostrar datos de la tarea seleccionada en "box"
+    // Mostrar datos de la tarea seleccionada en las cajas de texto de la derecha
     private void jtTareaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTareaMouseClicked
         String sql = "SELECT * FROM tarea WHERE tarea_id=?";
         new controlador.FuncionesApp().mostrarDatosTarea(jtTarea, sql, txtId, txtNombre, txtDescripcion, 
