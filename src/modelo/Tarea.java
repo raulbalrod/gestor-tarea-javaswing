@@ -1,6 +1,7 @@
 package modelo;
 
 import bbdd.Conexion;
+import com.toedter.calendar.JDateChooser;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,7 +75,7 @@ public class Tarea {
         } catch (Exception e) {}
     }
     
-    public void mostrarDatosTarea(JTable table, String sql, JTextField Id, JTextField nombre, JTextArea descripcion, JTextField fecha_entrega, JComboBox prioridad, JComboBox estado) {
+    public void mostrarDatosTarea(JTable table, String sql, JTextField Id, JTextField nombre, JTextArea descripcion, JDateChooser fecha_entrega, JComboBox prioridad, JComboBox estado) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         
@@ -97,7 +98,7 @@ public class Tarea {
                Id.setText(rs.getString("tarea_id"));
                nombre.setText(rs.getString("nombre"));
                descripcion.setText(rs.getString("descripcion"));
-               fecha_entrega.setText(rs.getString("fecha_entrega"));
+               ((JTextField)fecha_entrega.getDateEditor().getUiComponent()).setText(rs.getString("fecha_entrega"));
                prioridad.setSelectedItem(rs.getString("prioridad"));
                estado.setSelectedItem(rs.getString("estado"));
             }

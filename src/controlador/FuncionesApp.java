@@ -1,5 +1,6 @@
 package controlador;
 
+import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 
 public class FuncionesApp {
@@ -23,7 +24,7 @@ public class FuncionesApp {
         new modelo.Tarea().mostrar(table, sql);
     }
     
-    public void mostrarDatosTarea(JTable table, String sql, JTextField Id, JTextField nombre, JTextArea descripcion, JTextField fecha_entrega, JComboBox prioridad, JComboBox estado) {
+    public void mostrarDatosTarea(JTable table, String sql, JTextField Id, JTextField nombre, JTextArea descripcion, JDateChooser fecha_entrega, JComboBox prioridad, JComboBox estado) {
         new modelo.Tarea().mostrarDatosTarea(table, sql, Id, nombre, descripcion, fecha_entrega, prioridad, estado);
     }
 }

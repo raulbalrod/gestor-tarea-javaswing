@@ -24,9 +24,13 @@ public class ColorCelda extends JTable {
             } else if (valor.equalsIgnoreCase("revisar")) {
                 componente.setBackground(Color.orange);
                 componente.setForeground(Color.black);
-            } else {
+                
+            } else if (valor.equalsIgnoreCase("pendiente")) {
                 componente.setBackground(Color.gray);
                 componente.setForeground(Color.white);
+            } else {
+                componente.setBackground(Color.white);
+                componente.setForeground(Color.black);
             }
         } else {
             componente.setBackground(Color.white);

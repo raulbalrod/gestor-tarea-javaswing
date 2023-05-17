@@ -2,6 +2,7 @@ package vista;
 
 import beans.ColorCelda;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import placeholder.TextPrompt;
 
 public class Ver_Tareas extends javax.swing.JDialog {
@@ -14,7 +15,6 @@ public class Ver_Tareas extends javax.swing.JDialog {
         actualizarTareas();
         
         TextPrompt placeholder = new TextPrompt("Nombre de la tarea", txtBuscador);
-        TextPrompt placeholder2 = new TextPrompt("yyyy/mm/dd", txtFechaEntrega);
     }
     
     // Metodo para actualizar Jtable con nuevas tareas que se agreguen/ editen/ eliminen
@@ -28,7 +28,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
         txtId.setText(null);
         txtNombre.setText(null);
         txtDescripcion.setText(null);
-        txtFechaEntrega.setText(null);
+        ((JTextField)jDate.getDateEditor().getUiComponent()).setText(null);
         cbxPrioridad.setSelectedIndex(0);
         cbxEstado.setSelectedIndex(0);
     }
@@ -58,9 +58,9 @@ public class Ver_Tareas extends javax.swing.JDialog {
         btnMenu = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
-        txtFechaEntrega = new javax.swing.JTextField();
         txtId = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jDate = new com.toedter.calendar.JDateChooser();
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -209,6 +209,9 @@ public class Ver_Tareas extends javax.swing.JDialog {
         jLabel8.setForeground(new java.awt.Color(0, 102, 255));
         jLabel8.setText("Id");
 
+        jDate.setForeground(new java.awt.Color(0, 0, 0));
+        jDate.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -240,7 +243,6 @@ public class Ver_Tareas extends javax.swing.JDialog {
                         .addGap(41, 41, 41))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtFechaEntrega, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                             .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,7 +256,8 @@ public class Ver_Tareas extends javax.swing.JDialog {
                                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbxPrioridad, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbxEstado, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cbxEstado, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -292,9 +295,9 @@ public class Ver_Tareas extends javax.swing.JDialog {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFechaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbxPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -329,7 +332,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
         int id = Integer.parseInt(txtId.getText());
         String nombre = txtNombre.getText();
         String descripcion = txtDescripcion.getText();
-        String fecha_entrega = txtFechaEntrega.getText();
+        String fecha_entrega = ((JTextField)jDate.getDateEditor().getUiComponent()).getText();
         String prioridad = cbxPrioridad.getSelectedItem().toString();
         String estado = cbxEstado.getSelectedItem().toString();
         
@@ -360,7 +363,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
     private void jtTareaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtTareaMouseClicked
         String sql = "SELECT * FROM tarea WHERE tarea_id=?";
         new controlador.FuncionesApp().mostrarDatosTarea(jtTarea, sql, txtId, txtNombre, txtDescripcion, 
-                txtFechaEntrega, cbxPrioridad, cbxEstado);
+                jDate, cbxPrioridad, cbxEstado);
     }//GEN-LAST:event_jtTareaMouseClicked
 
     // Mostrar tarea buscada en la tabla
@@ -399,6 +402,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
     private javax.swing.JButton btnMenu;
     private javax.swing.JComboBox<String> cbxEstado;
     private javax.swing.JComboBox<String> cbxPrioridad;
+    private com.toedter.calendar.JDateChooser jDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -414,7 +418,6 @@ public class Ver_Tareas extends javax.swing.JDialog {
     private javax.swing.JTable jtTarea;
     private javax.swing.JTextField txtBuscador;
     private javax.swing.JTextArea txtDescripcion;
-    private javax.swing.JTextField txtFechaEntrega;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
