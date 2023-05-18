@@ -2,7 +2,7 @@ package main;
 
 import bbdd.Conexion;
 import java.awt.EventQueue;
-import vista.Login;
+import vista.Inicio;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class Main {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
 		try {
-                    Login frame = new Login();
+                    Inicio frame = new Inicio();
                     frame.setVisible(true);
 		} catch (Exception e) {
                     e.printStackTrace();

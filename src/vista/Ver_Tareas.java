@@ -1,6 +1,12 @@
 package vista;
 
+import bbdd.Conexion;
 import beans.ColorCelda;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Arrays;
+import java.util.Scanner;
 import javax.swing.JTextField;
 import placeholder.TextPrompt;
 
@@ -38,7 +44,6 @@ public class Ver_Tareas extends javax.swing.JDialog {
 
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        txtBuscador = new javax.swing.JTextField();
         btnBuscarTarea = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -60,6 +65,8 @@ public class Ver_Tareas extends javax.swing.JDialog {
         txtId = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jDate = new com.toedter.calendar.JDateChooser();
+        txtBuscador = new javax.swing.JTextField();
+        btnImportar = new javax.swing.JButton();
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -71,13 +78,8 @@ public class Ver_Tareas extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtBuscador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscadorActionPerformed(evt);
-            }
-        });
-
         btnBuscarTarea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/search.png"))); // NOI18N
+        btnBuscarTarea.setContentAreaFilled(false);
         btnBuscarTarea.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscarTarea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +170,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/menu.png"))); // NOI18N
         btnMenu.setBorder(null);
+        btnMenu.setContentAreaFilled(false);
         btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +183,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
         btnEliminar.setForeground(new java.awt.Color(0, 102, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/eliminar.png"))); // NOI18N
         btnEliminar.setBorder(null);
+        btnEliminar.setContentAreaFilled(false);
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnEliminar.setIconTextGap(10);
@@ -194,6 +198,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
         btnActualizar.setForeground(new java.awt.Color(0, 102, 255));
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/actualizar.png"))); // NOI18N
         btnActualizar.setBorder(null);
+        btnActualizar.setContentAreaFilled(false);
         btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnActualizar.setIconTextGap(10);
@@ -211,14 +216,30 @@ public class Ver_Tareas extends javax.swing.JDialog {
         jDate.setForeground(new java.awt.Color(0, 0, 0));
         jDate.setDateFormatString("yyyy-MM-dd");
 
+        btnImportar.setBackground(new java.awt.Color(255, 255, 255));
+        btnImportar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnImportar.setForeground(new java.awt.Color(0, 102, 255));
+        btnImportar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/txt.png"))); // NOI18N
+        btnImportar.setText("Importar Tareas");
+        btnImportar.setBorder(null);
+        btnImportar.setBorderPainted(false);
+        btnImportar.setContentAreaFilled(false);
+        btnImportar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnImportar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnImportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(44, 44, 44)
+                .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBuscarTarea)
                 .addGap(255, 878, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -230,7 +251,10 @@ public class Ver_Tareas extends javax.swing.JDialog {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(btnImportar, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -264,15 +288,13 @@ public class Ver_Tareas extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMenu)
+                            .addComponent(btnBuscarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnBuscarTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnMenu))))
+                                .addGap(13, 13, 13)
+                                .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -307,7 +329,8 @@ public class Ver_Tareas extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnImportar))
                 .addGap(18, 18, 18))
         );
 
@@ -371,13 +394,15 @@ public class Ver_Tareas extends javax.swing.JDialog {
         new controlador.FuncionesApp().buscarTarea(nombre_tarea, jtTarea);
     }//GEN-LAST:event_btnBuscarTareaActionPerformed
 
-    private void txtBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscadorActionPerformed
-
-    }//GEN-LAST:event_txtBuscadorActionPerformed
-
     private void txtDescripcionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescripcionFocusLost
 
     }//GEN-LAST:event_txtDescripcionFocusLost
+
+    // Boton para importar tareas desde un txt
+    private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
+       new controlador.FuncionesApp().importarTareasFichero();
+       actualizarTareas();
+    }//GEN-LAST:event_btnImportarActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -398,6 +423,7 @@ public class Ver_Tareas extends javax.swing.JDialog {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscarTarea;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnImportar;
     private javax.swing.JButton btnMenu;
     private javax.swing.JComboBox<String> cbxEstado;
     private javax.swing.JComboBox<String> cbxPrioridad;

@@ -31,4 +31,8 @@ public class FuncionesApp {
     public void exportarTareasFichero() {
         new modelo.Tarea().exportarTareasFichero();
     }
+    
+    public void importarTareasFichero() {
+        new modelo.Tarea().importarTareasFichero();
+    }
 }

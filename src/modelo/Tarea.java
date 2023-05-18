@@ -2,8 +2,10 @@ package modelo;
 
 import bbdd.Conexion;
 import com.toedter.calendar.JDateChooser;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -68,6 +71,13 @@ public class Tarea {
             model.addColumn("Prioridad");
             model.addColumn("Estado");
             jtTarea.setModel(model); // Asignacion del modelo de la Tabla
+            
+            // Medida de las columnas de la tabla
+            int[] anchos = {15, 50, 140, 70, 50, 50};
+            
+            for (int i = 0; i < cantidadColumnas; i++) {
+                jtTarea.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+            }
             
             // Recuperacion de datos de cada fila y agregandolos al modelo de tabla
             while (rs.next()) {
@@ -174,4 +184,30 @@ public class Tarea {
         }
     }
     
+    public void importarTareasFichero() {
+        File file = new File("./src/files/tareas.txt");
+        String tarea = "";
+        String[] valores = new String[5];
+        
+     
+        try {
+            BufferedReader bf = new BufferedReader(new FileReader(file));
+            
+            while ((tarea = bf.readLine()) != null) {
+                valores = tarea.split("/");
+                
+                // Variables para insetar la tarea
+                String nombre = valores[0];
+                String descripcion = valores[1];
+                String fecha_entrega = valores[2];
+                String prioridad = valores[3];
+                String estado = valores[4];
+                System.out.println(Arrays.toString(valores));
+                
+                insertTarea(nombre, descripcion, fecha_entrega, prioridad, estado);
+            }
+            
+            bf.close();
+        } catch (Exception e) {}
+    }
 }
