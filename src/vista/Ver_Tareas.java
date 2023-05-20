@@ -1,6 +1,7 @@
 package vista;
 
 import beans.ColorCelda;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import placeholder.TextPrompt;
 
@@ -345,26 +346,34 @@ public class Ver_Tareas extends javax.swing.JDialog {
 
     // Boton para actualizar tarea de la tabla
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        int id = Integer.parseInt(txtId.getText());
-        String nombre = txtNombre.getText();
-        String descripcion = txtDescripcion.getText();
-        String fecha_entrega = ((JTextField)jDate.getDateEditor().getUiComponent()).getText();
-        String prioridad = cbxPrioridad.getSelectedItem().toString();
-        String estado = cbxEstado.getSelectedItem().toString();
+        if (jtTarea.getSelectedRow() != -1) {
+            int id = Integer.parseInt(txtId.getText());
+            String nombre = txtNombre.getText();
+            String descripcion = txtDescripcion.getText();
+            String fecha_entrega = ((JTextField)jDate.getDateEditor().getUiComponent()).getText();
+            String prioridad = cbxPrioridad.getSelectedItem().toString();
+            String estado = cbxEstado.getSelectedItem().toString();
         
-        new controlador.FuncionesApp().updateTarea(id, nombre, descripcion, fecha_entrega, prioridad, estado);
-        
-        actualizarTareas();
-        limpiarCajas();
+            new controlador.FuncionesApp().updateTarea(id, nombre, descripcion, fecha_entrega, prioridad, estado);
+            
+            actualizarTareas();
+            limpiarCajas();
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes seleccionar una tarea");
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     // Boton para eliminar tarea de la tabla
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-       int id = Integer.parseInt(txtId.getText());
-       new controlador.FuncionesApp().deleteTarea(id);
+        if (jtTarea.getSelectedRow() != -1) {
+            int id = Integer.parseInt(txtId.getText());
+            new controlador.FuncionesApp().deleteTarea(id);
        
-       actualizarTareas();
-       limpiarCajas();
+            actualizarTareas();
+            limpiarCajas();
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes seleccionar una tarea");
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     // Boton Menu(Inicio)

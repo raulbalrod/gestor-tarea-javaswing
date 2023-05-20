@@ -2,6 +2,7 @@ package vista;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Agregar_Tarea extends javax.swing.JDialog {
@@ -218,14 +219,23 @@ public class Agregar_Tarea extends javax.swing.JDialog {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnAgregarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTareaActionPerformed
-        String nombre = txtNombre.getText();
-        String descripcion = txtDescripcion.getText();
-        String fecha_entrega = ((JTextField)jDate.getDateEditor().getUiComponent()).getText();
-        String prioridad = cbxPrioridad.getSelectedItem().toString();
-        String estado = cbxEstado.getSelectedItem().toString();
+        if (txtNombre.getText() != "" || 
+                txtDescripcion.getText() != "" ||
+                ((JTextField)jDate.getDateEditor().getUiComponent()).getText() != "" ||
+                cbxPrioridad.getSelectedItem().toString() != "" ||
+                cbxEstado.getSelectedItem().toString() != "")  
+        {
+            String nombre = txtNombre.getText();
+            String descripcion = txtDescripcion.getText();
+            String fecha_entrega = ((JTextField)jDate.getDateEditor().getUiComponent()).getText();
+            String prioridad = cbxPrioridad.getSelectedItem().toString();
+            String estado = cbxEstado.getSelectedItem().toString();
 
-        new controlador.FuncionesApp().insertTarea(nombre, descripcion, fecha_entrega, prioridad, estado);
-        limpiarCajas();
+            new controlador.FuncionesApp().insertTarea(nombre, descripcion, fecha_entrega, prioridad, estado);
+            limpiarCajas();
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes completar los campos");
+        }
     }//GEN-LAST:event_btnAgregarTareaActionPerformed
 
     public static void main(String args[]) {
