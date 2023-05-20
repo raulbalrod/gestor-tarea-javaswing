@@ -1,5 +1,6 @@
 package vista;
 
+import bbdd.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -219,11 +220,12 @@ public class Agregar_Tarea extends javax.swing.JDialog {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnAgregarTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTareaActionPerformed
-        if (txtNombre.getText() != "" || 
-                txtDescripcion.getText() != "" ||
-                ((JTextField)jDate.getDateEditor().getUiComponent()).getText() != "" ||
-                cbxPrioridad.getSelectedItem().toString() != "" ||
-                cbxEstado.getSelectedItem().toString() != "")  
+        if (!"".equals(txtNombre.getText()) || 
+                !"".equals(txtDescripcion.getText()) ||
+                !"".equals(((JTextField)jDate.getDateEditor().getUiComponent()).getText()) ||
+                !"".equals(cbxPrioridad.getSelectedItem().toString()) ||
+                !"".equals(cbxEstado.getSelectedItem().toString())
+            ) 
         {
             String nombre = txtNombre.getText();
             String descripcion = txtDescripcion.getText();
