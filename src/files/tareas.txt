@@ -1,5 +1,4 @@
-Tarea 1/Descripcion tarea 1/2023-05-21/media/pendiente
-Tarea 2/Descripcion tarea 2/2023-05-17/baja/en progreso
-Tarea 3/Descripcion tarea 3/2023-05-03/media/pendiente
-Tarea 4/Descripcion tarea 4/2023-05-11/media/completa
-Tarea 5/Descripcion tarea 5/2023-05-06/alta/revisar
+Investigacion/Análisis de mercado/2023-05-21/media/pendiente
+Depurar código/Identificar errores en el código/2023-05-17/baja/en progreso
+Interfaz de usuario/Crear diseño visual de la interfaz/2023-05-03/media/revisar
+
