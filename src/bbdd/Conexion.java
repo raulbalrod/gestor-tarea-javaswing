@@ -52,6 +52,9 @@ public class Conexion {
     
     public static void EjecutarUpdate(String Sentencia){
     	try{
+            if (consulta == null) {
+                Conectar();
+            }
             consulta = con.createStatement();
             consulta.executeUpdate(Sentencia);
             // System.out.println("Done.");

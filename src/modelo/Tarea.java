@@ -73,7 +73,7 @@ public class Tarea {
             jtTarea.setModel(model); // Asignacion del modelo de la Tabla
             
             // Medida de las columnas de la tabla
-            int[] anchos = {15, 50, 140, 70, 50, 50};
+            int[] anchos = {5, 70, 150, 50, 30, 35};
             
             for (int i = 0; i < cantidadColumnas; i++) {
                 jtTarea.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
